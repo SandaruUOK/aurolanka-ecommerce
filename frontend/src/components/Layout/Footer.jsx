@@ -12,7 +12,7 @@ const Footer = () => {
     }}>
       <div className="container">
         <p style={{ margin: 0, opacity: 0.8 }}>
-          © 2025 AuroLanka. Premium mobile phones and accessories.
+          © 2025 AuroLanka. Premium Mobile Phones and Accessories.
         </p>
       </div>
     </footer>

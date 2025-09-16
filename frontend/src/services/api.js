@@ -25,4 +25,18 @@ export const authAPI = {
   signup: (userData) => api.post('/auth/signup', userData),
 };
 
+export const adminAPI = {
+  // Get all products with admin privileges
+  getProducts: () => api.get('/admin/products'),
+  
+  // Create new product
+  createProduct: (productData) => api.post('/admin/products', productData),
+  
+  // Update product
+  updateProduct: (id, productData) => api.put(`/admin/products/${id}`, productData),
+  
+  // Delete product
+  deleteProduct: (id) => api.delete(`/admin/products/${id}`)
+};
+
 export default api;

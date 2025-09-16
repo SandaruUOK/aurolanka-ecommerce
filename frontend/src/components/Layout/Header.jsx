@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../../context/useCart';
 import { useAuth } from '../../context/useAuth';
 
-const Header = ({ onCartClick, onLoginClick }) => {
+const Header = ({ onCartClick, onLoginClick,onAdminClick }) => {
   const { getCartCount } = useCart();
   const { user, logout } = useAuth();
   const cartCount = getCartCount();
@@ -77,6 +77,17 @@ const Header = ({ onCartClick, onLoginClick }) => {
                 </button>
               </li>
             )}
+            {user && user.role === 'admin' && (
+  <li>
+    <button 
+      className="btn btn-secondary"
+      onClick={onAdminClick}
+      style={{ fontSize: '0.9rem' }}
+    >
+      Admin Panel
+    </button>
+  </li>
+)}
           </ul>
         </nav>
       </div>

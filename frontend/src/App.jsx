@@ -3,7 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './context/useAuth';
 import { CartProvider } from './context/CartContext';
 import { useCart } from './context/useCart';
-
+import AdminDashboard from './components/Admin/AdminDashboard';
 import Header from './components/Layout/Header';
 import ProductList from './components/Product/ProductList';
 import ProductDetail from './components/Product/ProductDetail';
@@ -19,10 +19,15 @@ function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState('login'); // 'login' or 'signup'
 
+
   const handleProductClick = (product) => {
     setSelectedProduct(product);
     setCurrentView('product-detail');
   };
+
+  const handleAdminClick = () => {
+  setCurrentView('admin');
+};
 
   const handleBackToHome = () => {
     setCurrentView('home');
@@ -58,6 +63,9 @@ function App() {
         
       case 'cart':
         return <Cart onBack={handleBackToHome} />;
+
+      case 'admin':
+        return <AdminDashboard onBack={handleBackToHome} />;
         
       default:
         return <ProductList onProductClick={handleProductClick} />;
@@ -71,6 +79,7 @@ function App() {
           <Header 
             onCartClick={handleCartClick}
             onLoginClick={handleLoginClick}
+            onAdminClick={handleAdminClick} 
           />
           
           <main style={{ flex: 1 }}>
