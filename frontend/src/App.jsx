@@ -121,29 +121,104 @@ function App() {
 
           <Footer />
           
+          {/* Fixed Modal Portal */}
           {showAuthModal && (
-            <div className="modal-overlay" onClick={() => setShowAuthModal(false)}>
-              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <button 
-                  className="modal-close"
-                  onClick={() => setShowAuthModal(false)}
+            <>
+              <div 
+                className="modal-overlay" 
+                onClick={() => setShowAuthModal(false)}
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  zIndex: 1000,
+                  padding: '1rem',
+                  backdropFilter: 'blur(4px)'
+                }}
+              >
+                <div 
+                  className="modal-content" 
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    backgroundColor: 'white',
+                    padding: '2rem',
+                    borderRadius: '16px',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    maxWidth: '420px',
+                    width: '100%',
+                    maxHeight: '90vh',
+                    overflowY: 'auto',
+                    position: 'relative',
+                    animation: 'modalEnter 0.3s ease-out'
+                  }}
                 >
-                  ×
-                </button>
-                
-                {authMode === 'login' ? (
-                  <Login 
-                    onSuccess={handleAuthSuccess}
-                    onSwitchToSignUp={() => setAuthMode('signup')}
-                  />
-                ) : (
-                  <SignUp 
-                    onSuccess={handleAuthSuccess}
-                    onSwitchToLogin={() => setAuthMode('login')}
-                  />
-                )}
+                  <button 
+                    className="modal-close"
+                    onClick={() => setShowAuthModal(false)}
+                    style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1rem',
+                      background: 'rgba(0, 0, 0, 0.05)',
+                      border: 'none',
+                      fontSize: '1.5rem',
+                      cursor: 'pointer',
+                      color: '#6b7280',
+                      width: '32px',
+                      height: '32px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '50%',
+                      transition: 'all 0.2s ease',
+                      fontWeight: '300'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.background = 'rgba(0, 0, 0, 0.1)';
+                      e.target.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.background = 'rgba(0, 0, 0, 0.05)';
+                      e.target.style.transform = 'scale(1)';
+                    }}
+                  >
+                    ×
+                  </button>
+                  
+                  {authMode === 'login' ? (
+                    <Login 
+                      onSuccess={handleAuthSuccess}
+                      onSwitchToSignUp={() => setAuthMode('signup')}
+                    />
+                  ) : (
+                    <SignUp 
+                      onSuccess={handleAuthSuccess}
+                      onSwitchToLogin={() => setAuthMode('login')}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
+
+              {/* Add keyframes for animation */}
+              <style jsx>{`
+                @keyframes modalEnter {
+                  from {
+                    opacity: 0;
+                    transform: scale(0.9) translateY(20px);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                  }
+                }
+              `}</style>
+            </>
           )}
         </div>
       </CartProvider>
