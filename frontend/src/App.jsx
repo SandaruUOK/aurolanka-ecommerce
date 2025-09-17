@@ -7,7 +7,7 @@ import AdminDashboard from './components/Admin/AdminDashboard';
 import Header from './components/Layout/Header';
 import ProductList from './components/Product/ProductList';
 import ProductDetail from './components/Product/ProductDetail';
-import Cart from './components/Cart/Cart';
+import Cart from './components/cart/Cart';
 import Checkout from './components/cart/Checkout';
 import OrderSuccess from './components/cart/OrderSuccess';
 import Login from './components/Auth/Login';

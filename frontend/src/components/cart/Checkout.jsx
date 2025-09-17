@@ -38,7 +38,7 @@ const Checkout = ({ onBack, onOrderComplete }) => {
         status: 'confirmed'
       };
 
-      // In a real app, you'd send this to your backend
+      // In a real app, have to send this to your backend
       console.log('Order placed:', orderData);
       
       // Clear cart and show success
@@ -218,7 +218,7 @@ const Checkout = ({ onBack, onOrderComplete }) => {
               style={{ width: '100%', marginTop: '2rem' }}
               disabled={loading}
             >
-              {loading ? 'Processing Order...' : `Place Order - $${total.toFixed(2)}`}
+              {loading ? 'Processing Order...' : `Place Order - Rs.${total.toFixed(2)}`}
             </button>
           </form>
         </div>
@@ -246,7 +246,7 @@ const Checkout = ({ onBack, onOrderComplete }) => {
                   </div>
                 </div>
                 <div style={{ fontWeight: '500' }}>
-                  ${(item.price * item.quantity).toFixed(2)}
+                  Rs.{(item.price * item.quantity).toFixed(2)}
                 </div>
               </div>
             ))}
@@ -256,7 +256,7 @@ const Checkout = ({ onBack, onOrderComplete }) => {
           <div style={{ borderTop: '2px solid #e5e7eb', paddingTop: '1rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
               <span>Subtotal:</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>Rs.{subtotal.toFixed(2)}</span>
             </div>
             
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -266,7 +266,7 @@ const Checkout = ({ onBack, onOrderComplete }) => {
             
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
               <span>Tax (8%):</span>
-              <span>${tax.toFixed(2)}</span>
+              <span>Rs.{tax.toFixed(2)}</span>
             </div>
             
             <div style={{ 
@@ -279,7 +279,7 @@ const Checkout = ({ onBack, onOrderComplete }) => {
               marginTop: '0.5rem'
             }}>
               <span>Total:</span>
-              <span>${total.toFixed(2)}</span>
+              <span>Rs.{total.toFixed(2)}</span>
             </div>
           </div>
 

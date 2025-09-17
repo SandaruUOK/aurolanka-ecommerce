@@ -62,7 +62,7 @@ const ProductCard = ({ product, onClick }) => {
           fontWeight: 'bold',
           fontSize: '1.5rem',
           marginBottom: '1rem'
-        }}>${product.price}</p>
+        }}>Rs.{product.price}</p>
         <button 
           className="btn btn-primary"
           style={{ width: '100%' }}
