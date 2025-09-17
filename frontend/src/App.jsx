@@ -8,6 +8,8 @@ import Header from './components/Layout/Header';
 import ProductList from './components/Product/ProductList';
 import ProductDetail from './components/Product/ProductDetail';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/cart/Checkout';
+import OrderSuccess from './components/cart/OrderSuccess';
 import Login from './components/Auth/Login';
 import SignUp from './components/Auth/SignUp';
 import Footer from './components/Layout/Footer';
@@ -18,7 +20,7 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState('login'); // 'login' or 'signup'
-
+  const [orderData, setOrderData] = useState(null);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -26,16 +28,21 @@ function App() {
   };
 
   const handleAdminClick = () => {
-  setCurrentView('admin');
-};
+    setCurrentView('admin');
+  };
 
   const handleBackToHome = () => {
     setCurrentView('home');
     setSelectedProduct(null);
+    setOrderData(null);
   };
 
   const handleCartClick = () => {
     setCurrentView('cart');
+  };
+
+  const handleCheckoutClick = () => {
+    setCurrentView('checkout');
   };
 
   const handleLoginClick = () => {
@@ -45,7 +52,12 @@ function App() {
 
   const handleAuthSuccess = () => {
     setShowAuthModal(false);
-    setCurrentView('home');
+    // Don't change view, stay where user was
+  };
+
+  const handleOrderComplete = (orderData) => {
+    setOrderData(orderData);
+    setCurrentView('order-success');
   };
 
   const renderCurrentView = () => {
@@ -62,7 +74,28 @@ function App() {
         );
         
       case 'cart':
-        return <Cart onBack={handleBackToHome} />;
+        return (
+          <Cart 
+            onBack={handleBackToHome} 
+            onCheckout={handleCheckoutClick}
+          />
+        );
+
+      case 'checkout':
+        return (
+          <Checkout 
+            onBack={() => setCurrentView('cart')}
+            onOrderComplete={handleOrderComplete}
+          />
+        );
+
+      case 'order-success':
+        return (
+          <OrderSuccess 
+            orderData={orderData}
+            onContinueShopping={handleBackToHome}
+          />
+        );
 
       case 'admin':
         return <AdminDashboard onBack={handleBackToHome} />;

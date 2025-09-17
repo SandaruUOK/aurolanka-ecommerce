@@ -491,6 +491,7 @@ input:focus, textarea:focus, select:focus {
     text-decoration: underline;
   }
   
+  
   h1, h2, h3 {
     page-break-after: avoid;
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../../context/useCart';
 import { useAuth } from '../../context/useAuth';
 
-const Cart = ({ onBack }) => {
+const Cart = ({ onBack, onCheckout }) => {
   const { cart, removeFromCart, updateQuantity, clearCart, getCartTotal } = useCart();
   const { user } = useAuth();
 
@@ -115,7 +115,10 @@ const Cart = ({ onBack }) => {
           <h3>Total: ${getCartTotal().toFixed(2)}</h3>
           
           {user ? (
-            <button className="btn btn-primary btn-lg mt-2">
+            <button 
+              className="btn btn-primary btn-lg mt-2"
+              onClick={onCheckout}
+            >
               Proceed to Checkout
             </button>
           ) : (
