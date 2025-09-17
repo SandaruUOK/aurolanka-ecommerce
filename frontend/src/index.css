@@ -490,6 +490,10 @@ input:focus, textarea:focus, select:focus {
   a {
     text-decoration: underline;
   }
+  input[type="radio"] {
+  margin-left: 0 !important;
+  margin-right: 12px !important;
+}
   
   h1, h2, h3 {
     page-break-after: avoid;

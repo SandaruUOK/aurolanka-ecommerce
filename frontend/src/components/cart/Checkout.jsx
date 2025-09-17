@@ -144,45 +144,72 @@ const Checkout = ({ onBack, onOrderComplete }) => {
                 required
               />
             </div>
-
+            
             <h3 style={{ marginTop: '2rem', marginBottom: '1rem' }}>Payment Method</h3>
             
             <div className="form-group">
-              <label style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="card"
-                  checked={formData.paymentMethod === 'card'}
-                  onChange={handleChange}
-                  style={{ marginRight: '0.5rem' }}
-                />
-                Credit/Debit Card
-              </label>
-              
-              <label style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="cash"
-                  checked={formData.paymentMethod === 'cash'}
-                  onChange={handleChange}
-                  style={{ marginRight: '0.5rem' }}
-                />
-                Cash on Delivery
-              </label>
-              
-              <label style={{ display: 'flex', alignItems: 'center' }}>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="bank"
-                  checked={formData.paymentMethod === 'bank'}
-                  onChange={handleChange}
-                  style={{ marginRight: '0.5rem' }}
-                />
-                Bank Transfer
-              </label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <label style={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  cursor: 'pointer',
+                  padding: '1rem',
+                  border: formData.paymentMethod === 'card' ? '2px solid #3b82f6' : '2px solid #e5e7eb',
+                  borderRadius: '8px',
+                  backgroundColor: formData.paymentMethod === 'card' ? '#f0f9ff' : 'white'
+                }}>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="card"
+                    checked={formData.paymentMethod === 'card'}
+                    onChange={handleChange}
+                    style={{ marginRight: '12px', marginLeft: '0' }}
+                  />
+                  <span style={{ fontWeight: '500' }}>💳 Credit/Debit Card</span>
+                </label>
+                
+                <label style={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  padding: '1rem',
+                  border: formData.paymentMethod === 'cash' ? '2px solid #3b82f6' : '2px solid #e5e7eb',
+                  borderRadius: '8px',
+                  backgroundColor: formData.paymentMethod === 'cash' ? '#f0f9ff' : 'white'
+                }}>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="cash"
+                    checked={formData.paymentMethod === 'cash'}
+                    onChange={handleChange}
+                    style={{ marginRight: '0px' }}
+                  />
+                  <span style={{ fontWeight: '500' }}>💵 Cash on Delivery</span>
+                </label>
+                
+                <label style={{ 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  padding: '1rem',
+                  border: formData.paymentMethod === 'bank' ? '2px solid #3b82f6' : '2px solid #e5e7eb',
+                  borderRadius: '8px',
+                  backgroundColor: formData.paymentMethod === 'bank' ? '#f0f9ff' : 'white'
+                }}>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="bank"
+                    checked={formData.paymentMethod === 'bank'}
+                    onChange={handleChange}
+                    style={{ marginRight: '12px' }}
+                  />
+                  <span style={{ fontWeight: '500' }}>🏦 Bank Transfer</span>
+                </label>
+              </div>
             </div>
 
             <button 
