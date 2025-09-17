@@ -1,38 +1,4 @@
-/*import React from 'react';
-import { useCart } from '../../context/useCart';
 
-const ProductCard = ({ product, onClick }) => {
-  const { addToCart } = useCart();
-
-  const handleAddToCart = (e) => {
-    e.stopPropagation(); // Prevent card click when clicking button
-    addToCart(product);
-  };
-
-  return (
-    <div className="product-card" onClick={() => onClick(product)}>
-      <img 
-        src={product.image} 
-        alt={product.name}
-        className="product-image"
-      />
-      <div className="product-info">
-        <div className="product-brand">{product.brand}</div>
-        <h3 className="product-name">{product.name}</h3>
-        <div className="product-price">${product.price}</div>
-        <button 
-          className="btn btn-primary btn-sm"
-          onClick={handleAddToCart}
-          style={{ width: '100%' }}
-        >
-          Add to Cart
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default ProductCard;*/
 import React from 'react';
 import { useCart } from '../../context/useCart';
 
